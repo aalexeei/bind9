@@ -1,18 +1,18 @@
-#Installing and Configuring Bind9 on Ubuntu
+# Installing and Configuring Bind9 on Ubuntu
 
-##Step 1: Update System Packages
+## Step 1: Update System Packages
 Before installing Bind9, it's a good practice to update the system's package repositories to ensure you have the latest available packages. Open a terminal and run the following command:
 
 ```bash
 sudo apt update
 ```
-##Step 2: Install Bind9
+## Step 2: Install Bind9
 To install Bind9, run the following command in the terminal:
 
 ```bash
 sudo apt install bind9
 ```
-##Step 3: Configure Bind9
+## Step 3: Configure Bind9
 Once Bind9 is installed, you need to configure its settings. Here's how you can do it:
 
 Open the Bind9 configuration file using a text editor. In this example, we'll use nano:
@@ -39,7 +39,7 @@ listen-on: Defines the IP addresses on which Bind9 will listen for DNS queries. 
 forwarders: Sets the IP addresses of DNS servers to which Bind9 will forward unresolved queries. Here, we're using Google's DNS servers as an example.
 Save the changes and exit the text editor.
 
-##Step 4: Configure DNS Zones
+## Step 4: Configure DNS Zones
 Bind9 uses zone files to define DNS records. You can create your own zone files or use pre-configured ones. Here's a basic example of configuring a forward zone:
 
 Create a new zone file using a text editor. For example, create a file named example.com.zone:
@@ -68,7 +68,7 @@ firmware.example    IN      CNAME   example
 This example sets up a zone for the example.com domain with two name servers (ns1 and ns2) and an A record for www pointing to 192.168.1.20.
 Save the zone file and exit the text editor.
 
-##Step 5: Include Zone Configuration
+## Step 5: Include Zone Configuration
 After creating the zone file, you need to include it in the Bind9 configuration:
 
 Open the Bind9 options file for editing:
@@ -85,13 +85,13 @@ zone "com" {
 ```
 This line specifies that the example.com domain is a master zone and the zone file is located at /etc/bind/zones/example.com.zone.
 Save the changes and exit the text editor.
-Step 6: Restart Bind9
+## Step 6: Restart Bind9
 Once you have completed the configuration, restart the Bind9 service to apply the changes:
 
 ```bash
 sudo service bind9 restart
 ```
-Step 7: Verify Bind9 Configuration
+## Step 7: Verify Bind9 Configuration
 To verify that Bind9 is running and configured correctly, you can perform a DNS query. For example, you can use the dig command to query the A record of the www.example.com domain:
 
 ```bash
